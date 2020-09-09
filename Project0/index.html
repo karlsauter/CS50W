@@ -2,14 +2,20 @@
 <html lang="en">
     <head>
         <title>Search</title>
+        <link rel="stylesheet" href="style.css">
     </head>
     <body>
-        <a href="images.html">Image search</a>
-        <a href="advanced.html">Advanced search</a>
-        <form action="https://google.com/search">
-            <input type="text" name="q"></br>
-            <input type="submit" value="Google Search">
-            <input type="submit" onsubmit="" value="I'm Feeling Lucky">
-        </form>
+        <div class="menu">
+            <a href="images.html">Image Search</a>
+            <a href="advanced.html">Advanced Search</a>    
+        </div>
+        <div class="search">
+            <img src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png">
+            <form action="https://google.com/search">
+                <input id="searchbar" type="text" name="q"></br>
+                <input class="button" type="submit" name="btnK" value="Google Search">
+                <input class="button" type="submit" name="btnI" value="I'm Feeling Lucky">
+            </form>
+        </div>
     </body>
 </html>
