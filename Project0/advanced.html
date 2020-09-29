@@ -2,20 +2,65 @@
 <html lang="en">
     <head>
         <title>Advanced Search</title>
+        <link rel="stylesheet" href="style.css">
     </head>
     <body>
-        <a href="index.html">Back to home</a>
-        <form action="https://google.com/search">
-            <p>Find pages with...</p>
-            <label for="q">all these words:</label>
-            <input type="text" name="as_q" id="q"></br>
-            <label for="epq">this exact word or phrase:</label>
-            <input type="text" name="as_epq" id="epq"></br>
-            <label for="oq">any of these words:</label>
-            <input type="text" name="as_oq" id="oq"></br>
-            <label for="eq">none of these words:</label>
-            <input type="text" name="as_eq" id="eq"></br>
-            <input type="submit" value="Advanced Search">
-        </form>
+        <div class="advanced">
+            <div class="logo">
+                <a href="index.html">
+                    <span class="bg"></span>
+                </a>
+            </div>
+            <div class="menu">
+                <a href="index.html">Back to Google Search</a>
+            </div>
+        </div>
+        <div class="title">
+            <label>Advanced Search</label>
+        </div>
+        <div class="line"></div>
+        <div class="advsearch">
+            <form action="https://google.com/search">
+                <p>Find pages with...</p>
+                <div class="item">
+                    <div class="label">
+                        <label for="q">all these words:</label>
+                    </div>
+                    <div class="input">
+                        <input type="text" name="as_q" id="q">
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="label">
+                        <label for="epq">this exact word or phrase:</label>
+                    </div>
+                    <div class="input">
+                        <input type="text" name="as_epq" id="epq">
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="label">
+                        <label for="oq">any of these words:</label>
+                    </div>
+                    <div class="input">
+                        <input type="text" name="as_oq" id="oq">
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="label">
+                        <label for="eq">none of these words:</label>
+                    </div>
+                    <div class="input">
+                        <input type="text" name="as_eq" id="eq">
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="label"></div>
+                    <div class="input">
+                        <input class="button" type="submit" value="Advanced Search">
+                    </div>
+                </div>
+            </form>
+        </div>
     </body>
 </html>

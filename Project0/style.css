@@ -1,9 +1,175 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    margin: 0px;
+}
+
 .menu {
-    padding: 0.5em;
+    padding: 1.5em;
     text-align: right;
+}
+
+.menu a {
+    margin-left: 1em;
+    color: rgba(0,0,0,0.87);
+    text-decoration: none;
 }
 
 .search {
     margin: auto;
+    height: 520px;
+    display: block;
+    text-align: -webkit-center;
+}
+
+.search img {
+    padding-top: 109px;
+    height: 92px;
+    width: 272px;
+}
+
+.sub {
+    color: #4285f4;
+    font: 16px/16px roboto-regular, arial, sans-serif;
+    position: relative;
+    left: 105px;
+    top: -20px;
+    margin-bottom: -16px;
+}
+
+.button {
+    background-color: #f2f2f2;
+    color: #5F6368;
+    border: none;
+    border-radius: 4px;
+    height: 36px;
+    min-width: 54px;
+    margin: 11px 4px;
+    padding: 0px 16px;
+}
+
+.button:hover {
+    box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+    border: 1px solid #c6c6c6;
+}
+
+.button:focus {
+    border: 1px solid #4d90fe;
+    outline: none;
+}
+
+#searchbar {
+    width: 500px;
+    margin: 1em;
+    padding: 0.7em;
+    padding-left: 1.5em;
+    border: 1px solid #dfe1e5;
+    border-radius: 24px;
+    font-size: 16px;
+}
+
+#searchbar:hover, #searchbar:focus {
+    box-shadow: 0 0 2px 1px #dfe1e5;
+    border: 1px solid #fff;
+    outline: none;
+}
+
+/*Advanced search specific*/
+.advanced {
+    background-color: #f1f1f1;
+    margin: 0px;
+    padding: 0px;
+    height: 60px;
+}
+
+.logo {
+    position: absolute;
+    padding: 0 20px 0 15px;
+}
+
+.bg {
+    display: block;
+    background-image: url('https://ssl.gstatic.com/gb/images/i2_2ec824b0.png');
+    background-size: 528px 68px;
+    background-position: 0 -35px;
+    height: 33px;
+    width: 92px;
+    margin-top: 15px;
+}
+
+.title {
+    color: #d93025;
+    font-size: 20px;
+    margin: 25px 35px;
+}
+
+.title label {
+    margin-left: 10px;
+}
+
+.line {
+    border-bottom: 1px solid #ebebeb;
+}
+
+.advsearch {
+    max-width: 1140px;
+    min-width: 200px;
+    width: 96%;
+    margin: 40px 2% 0 45px;
+}
+
+.advsearch p {
+    font-size: 16px;
+    margin: 0;
+    padding: 6px 0;
+    height: 30px;
+    color: #333;
+}
+
+.item {
+    height: 42px;
+}
+
+.label, .input {
+    display: inline-block;
+    font-size: 13px;
+}
+
+.label {
+    width: 16%;
+    color: #222;
+    min-width: 167px;
+}
+
+.input {
     width: 50%;
+    margin: 0;
+    padding: 0;
+    text-align: right;
+}
+
+.input input {
+    width: 98%;
+    border: 1px solid #d9d9d9;
+    border-radius: 1px;
+    border-top: 1px solid #c0c0c0;
+    height: 25px;
+    padding: 1px 8px;
+}
+
+.input input:focus {
+    border: 1px solid #4d90fe;
+    outline: none;
+}
+
+.advsearch .button {
+    height: 30px;
+    width: 130px;
+    margin: 10px 0;
+    background-color: #4d90fe;
+    color: #fff;
+    border: 1px solid #3079ed;
+    border-radius: 2px;
+    font-size: 11px;
+    font-weight: bold;
 }
