@@ -40,12 +40,13 @@ body {
 .button {
     background-color: #f2f2f2;
     color: #5F6368;
-    border: none;
+    border: 1px solid #f2f2f2;
     border-radius: 4px;
     height: 36px;
     min-width: 54px;
     margin: 11px 4px;
     padding: 0px 16px;
+    cursor: pointer;
 }
 
 .button:hover {
@@ -69,7 +70,7 @@ body {
 }
 
 #searchbar:hover, #searchbar:focus {
-    box-shadow: 0 0 2px 1px #dfe1e5;
+    box-shadow: 0 1px 4px 2px #e1e1e1;
     border: 1px solid #fff;
     outline: none;
 }
