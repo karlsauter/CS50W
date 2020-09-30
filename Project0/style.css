@@ -15,6 +15,10 @@ body {
     text-decoration: none;
 }
 
+.menu a:hover, .menu a:active {
+    text-decoration: underline;
+}
+
 .search {
     margin: auto;
     height: 520px;
