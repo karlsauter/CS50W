@@ -9,13 +9,14 @@ class SearchForm(forms.Form):
     }))
 
 def index(request):
-    search_term = ""
-    form = SearchForm()
 
     if request.GET:
         form = SearchForm(request.GET)
         if form.is_valid():
             search_term = form.cleaned_data["q"]
+    else:
+        search_term = ""
+        form = SearchForm()
 
     return render(request, "encyclopedia/index.html", {
         "entries": util.search_entries(search_term),

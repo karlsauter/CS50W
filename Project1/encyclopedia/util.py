@@ -38,4 +38,8 @@ def get_entry(title):
 
 
 def search_entries(term=""):
-    return list(filter(lambda entry: entry.lower().find(term.lower()) > -1, list_entries()))
+    entries = list_entries()
+    if term:
+        search = lambda entry: entry.lower().find(term.lower()) > -1
+        entries = filter(search, entries)
+    return list(entries)
