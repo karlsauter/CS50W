@@ -38,6 +38,9 @@ def get_entry(title):
 
 
 def search_entries(term=""):
+    """
+    Returns a list of all entries with titles containing term.
+    """
     entries = list_entries()
     if term:
         search = lambda entry: entry.lower().find(term.lower()) > -1
