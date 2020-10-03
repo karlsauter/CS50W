@@ -35,3 +35,7 @@ def get_entry(title):
         return f.read().decode("utf-8")
     except FileNotFoundError:
         return None
+
+
+def search_entries(term=""):
+    return list(filter(lambda entry: entry.lower().find(term.lower()) > -1, list_entries()))

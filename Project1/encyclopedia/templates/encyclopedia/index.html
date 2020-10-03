@@ -9,7 +9,9 @@
 
     <ul>
         {% for entry in entries %}
-            <li>{{ entry }}</li>
+            <li><a href="{% url 'entry' entry %}">{{ entry }}</a></li>
+        {% empty %}
+            <li>No entries match your search.</li>
         {% endfor %}
     </ul>
 
