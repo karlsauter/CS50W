@@ -12,6 +12,7 @@ class SearchForm(forms.Form):
 
 def index(request):
 
+    # Process search form
     if request.GET:
         form = SearchForm(request.GET)
         if form.is_valid():
@@ -20,11 +21,10 @@ def index(request):
         search_term = ""
         form = SearchForm()
     
-    # Add redirection when only one result from search
-    
+    # If there's only one result, redirect to that entry
     entries = util.search_entries(search_term)
     if len(entries) == 1:
-        HttpResponseRedirect(reverse("entry", entries[0]))
+        return HttpResponseRedirect(reverse("entry", args=entries))
 
     return render(request, "encyclopedia/index.html", {
         "entries": entries,
@@ -32,11 +32,16 @@ def index(request):
     })
 
 def entry(request, title):
+
+    # Find entry
     entry = util.get_entry(title)
+    form = SearchForm()
     if not entry:
         title = "Not Found"
         entry = "This entry does not exist. Please enter a valid entry."
+    
     return render(request, "encyclopedia/entry.html", {
         "title": title,
-        "entry": entry
+        "entry": entry,
+        "form": form
     })
