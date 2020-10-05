@@ -5,7 +5,11 @@
 {% endblock %}
 
 {% block body %}
+    {% if request.GET.q %}
+    <h1>Search Results</h1>
+    {% else %}
     <h1>All Pages</h1>
+    {% endif %}
 
     <ul>
         {% for entry in entries %}

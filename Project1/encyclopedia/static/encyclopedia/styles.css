@@ -12,19 +12,29 @@ h1 {
     padding-top: 20px;
 }
 
-textarea {
-    height: 90vh;
-    width: 80%;
-}
-
 .main {
     padding: 10px;
 }
 
-.search {
-    width: 100%;
+input, label {
     font-size: 15px;
     line-height: 15px;
+}
+
+label {
+    width: 100%;
+}
+
+.search {
+    width: 100%;
+}
+
+.title, .content {
+    width: 80%;
+}
+
+.content {
+    height: 60%;
 }
 
 .sidebar {

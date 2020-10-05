@@ -9,27 +9,35 @@
         <link href="{% static 'encyclopedia/styles.css' %}" rel="stylesheet">
     </head>
     <body>
-        <div class="row">
-            <div class="sidebar col-lg-2 col-md-3">
-                <h2>Wiki</h2>
-                <form action="{% url 'index' %}">
-                    {{ form }}
-                </form>
-                <div>
-                    <a href="{% url 'index' %}">Home</a>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="sidebar col-lg-2 col-md-3">
+                    <h2>Wiki</h2>
+                    <form action="{% url 'index' %}">
+                        {{ searchForm }}
+                    </form>
+                    <div>
+                        <a href="{% url 'index' %}">Home</a>
+                    </div>
+                    <div>
+                        <a href="{% url 'newpage' %}">Create New Page</a>
+                    </div>
+                    <div>
+                        Random Page
+                    </div>
+                    {% block nav %}
+                    {% endblock %}
                 </div>
-                <div>
-                    Create New Page
+                <div class="main col-lg-10 col-md-9">
+                    {% block body %}
+                    {% endblock %}
+
+                    {% if request.GET.q or request.path != "/" %}
+                    <div class="back">
+                        <a href="{% url 'index' %}">Back Home</a>
+                    </div>
+                    {% endif %}                
                 </div>
-                <div>
-                    Random Page
-                </div>
-                {% block nav %}
-                {% endblock %}
-            </div>
-            <div class="main col-lg-10 col-md-9">
-                {% block body %}
-                {% endblock %}
             </div>
         </div>
 

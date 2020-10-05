@@ -1,7 +1,7 @@
 {% extends "encyclopedia/layout.html" %}
 
 {% block title %}
-    Wiki | {{ title }}
+    Encyclopedia | {{ title }}
 {% endblock %}
 
 {% block body %}
@@ -9,7 +9,4 @@
 
     {{ entry }}
 
-    </br>
-    </br>
-    <a href="{% url 'index' %}">Back to list</a>
 {% endblock %}
