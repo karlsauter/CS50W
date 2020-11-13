@@ -39,8 +39,21 @@ def entry(request, title):
         "entry": entry
     })
 
-def newpage(request):
-    return render(request, "encyclopedia/newpage.html", {
+def new(request):
+    if request.method == "POST":
+        form = forms.EntryForm(request.POST)
+        if form.is_valid():
+            title = form.cleaned_data["title"]
+            content = form.cleaned_data["content"]
+            util.save_entry(title, content)
+            return HttpResponseRedirect(reverse("entry", args=util.search_entries(title)))
+    else:
+        form = forms.EntryForm()
+
+    return render(request, "encyclopedia/new.html", {
         "searchForm": forms.SearchForm(),
-        "newPageForm": forms.NewPageForm()
+        "newPageForm": form
     })
+
+def edit(request):
+    return "Not yet implemented."
