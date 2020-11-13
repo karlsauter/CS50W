@@ -30,8 +30,10 @@ def entry(request, title):
     entry = util.get_entry(title)
     form = forms.SearchForm()
     if not entry:
-        title = "Not Found"
-        entry = "This entry does not exist. Please enter a valid entry."
+        return render(request, "encyclopedia/notfound.html", {
+            "searchForm": form,
+            "title": title,
+        })
     
     return render(request, "encyclopedia/entry.html", {
         "searchForm": form,
@@ -55,5 +57,19 @@ def new(request):
         "newPageForm": form
     })
 
-def edit(request):
-    return "Not yet implemented."
+def edit(request, title):
+    form = forms.EntryForm()
+
+    entry = util.get_entry(title)
+    form = forms.SearchForm()
+    if not entry:
+        return render(request, "encyclopedia/notfound.html", {
+            "searchForm": form,
+            "title": title,
+        })
+
+    return render(request, "encyclopedia/edit.html", {
+        "searchForm": forms.SearchForm(),
+        "editForm": form,
+        "title": title
+    })

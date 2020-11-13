@@ -1,0 +1,12 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    Encyclopedia | Not Found
+{% endblock %}
+
+{% block body %}
+    <h1>Not Found</h1>
+
+    <p>No article was found for {{ title }}, because it does not exist or was deleted. Please choose a valid entry from the menu <a href="{% url 'index' %}" class="href">here</a>.</p>
+
+{% endblock %}
