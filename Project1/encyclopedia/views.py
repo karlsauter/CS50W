@@ -43,14 +43,14 @@ def entry(request, title):
 
 def new(request):
     if request.method == "POST":
-        form = forms.EntryForm(request.POST)
+        form = forms.newEntryForm(request.POST)
         if form.is_valid():
             title = form.cleaned_data["title"]
             content = form.cleaned_data["content"]
             util.save_entry(title, content)
             return HttpResponseRedirect(reverse("entry", args=util.search_entries(title)))
     else:
-        form = forms.EntryForm()
+        form = forms.newEntryForm()
 
     return render(request, "encyclopedia/new.html", {
         "searchForm": forms.SearchForm(),
@@ -58,16 +58,24 @@ def new(request):
     })
 
 def edit(request, title):
-    form = forms.EntryForm()
-
+    title = title
     entry = util.get_entry(title)
-    form = forms.SearchForm()
     if not entry:
         return render(request, "encyclopedia/notfound.html", {
-            "searchForm": form,
+            "searchForm": forms.SearchForm(),
             "title": title,
         })
+    if request.method == "POST":
+        form = forms.editEntryForm(request.POST)
+        if form.is_valid():
+            content = form.cleaned_data["content"]
+            util.save_entry(title, content)
+            return HttpResponseRedirect(reverse("entry", args=util.search_entries(title)))
 
+    data = {
+        "content": entry
+    }
+    form = forms.editEntryForm(data)
     return render(request, "encyclopedia/edit.html", {
         "searchForm": forms.SearchForm(),
         "editForm": form,
