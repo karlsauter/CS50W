@@ -2,6 +2,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
 from random import choice
+import markdown2
 from . import util, forms
 
 def index(request):
@@ -28,7 +29,7 @@ def index(request):
 def entry(request, title):
 
     # Find entry
-    entry = util.get_entry(title)
+    entry = markdown2.markdown(util.get_entry(title))
     form = forms.SearchForm()
     if not entry:
         return render(request, "encyclopedia/notfound.html", {
