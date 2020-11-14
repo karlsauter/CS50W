@@ -1,6 +1,7 @@
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
+from random import choice
 from . import util, forms
 
 def index(request):
@@ -10,14 +11,14 @@ def index(request):
         form = forms.SearchForm(request.GET)
         if form.is_valid():
             search_term = form.cleaned_data["q"]
+            entries = util.search_entries(search_term)
+            # If there's only one result, redirect to that entry
+            if len(entries) == 1:
+                return HttpResponseRedirect(reverse("entry", args=entries))
     else:
-        search_term = ""
+        entries = util.list_entries()
         form = forms.SearchForm()
     
-    # If there's only one result, redirect to that entry
-    entries = util.search_entries(search_term)
-    if len(entries) == 1:
-        return HttpResponseRedirect(reverse("entry", args=entries))
 
     return render(request, "encyclopedia/index.html", {
         "searchForm": form,
@@ -48,7 +49,7 @@ def new(request):
             title = form.cleaned_data["title"]
             content = form.cleaned_data["content"]
             util.save_entry(title, content)
-            return HttpResponseRedirect(reverse("entry", args=util.search_entries(title)))
+            return HttpResponseRedirect(reverse("entry", args=[title]))
     else:
         form = forms.newEntryForm()
 
@@ -70,7 +71,7 @@ def edit(request, title):
         if form.is_valid():
             content = form.cleaned_data["content"]
             util.save_entry(title, content)
-            return HttpResponseRedirect(reverse("entry", args=util.search_entries(title)))
+            return HttpResponseRedirect(reverse("entry", args=[title]))
 
     data = {
         "content": entry
@@ -81,3 +82,8 @@ def edit(request, title):
         "editForm": form,
         "title": title
     })
+
+def random(request):
+    title = choice(util.list_entries())
+    print(title)
+    return HttpResponseRedirect(reverse("entry", args=[title]))
