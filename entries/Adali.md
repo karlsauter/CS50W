@@ -1,3 +1,0 @@
-# Adali
-
-Esposa de Karl
