@@ -1,7 +1,9 @@
 import re
+import markdown2
 
 from django.core.files.base import ContentFile
 from django.core.files.storage import default_storage
+
 
 
 def list_entries():
@@ -31,8 +33,7 @@ def get_entry(title):
     entry exists, the function returns None.
     """
     try:
-        f = default_storage.open(f"entries/{title}.md")
-        return f.read().decode("utf-8")
+        return markdown2.markdown_path(f"entries/{title}.md")
     except FileNotFoundError:
         return None
 

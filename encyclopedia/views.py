@@ -36,11 +36,6 @@ def entry(request, title):
             "searchForm": form,
             "title": title,
         })
-    else:
-        # Parse entry
-        entry = [markdown2.markdown(line) for line in entry if line != '']
-        entry = "".join(entry)
-
     
     return render(request, "encyclopedia/entry.html", {
         "searchForm": form,
