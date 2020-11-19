@@ -29,7 +29,9 @@ def index(request):
 def entry(request, title):
 
     # Find entry
-    entry = markdown2.markdown(util.get_entry(title))
+    entry = util.get_entry(title).splitlines()
+    entry = [markdown2.markdown(line) for line in entry if line != '']
+    entry = "".join(entry)
     form = forms.SearchForm()
     if not entry:
         return render(request, "encyclopedia/notfound.html", {
