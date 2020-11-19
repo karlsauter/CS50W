@@ -29,7 +29,7 @@ def index(request):
 def entry(request, title):
 
     # Find entry
-    entry = util.get_entry(title)
+    entry = util.get_entry_html(title)
     form = forms.SearchForm()
     if not entry:
         return render(request, "encyclopedia/notfound.html", {

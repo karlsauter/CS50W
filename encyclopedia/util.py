@@ -33,10 +33,20 @@ def get_entry(title):
     entry exists, the function returns None.
     """
     try:
-        return markdown2.markdown_path(f"entries/{title}.md")
+        f = default_storage.open(f"entries/{title}.md")
+        return f.read().decode("utf-8")
     except FileNotFoundError:
         return None
 
+def get_entry_html(title):
+    """
+    Retrieves an encyclopedia entry by its title in HTML format.
+    If no such entry exists, the function returns None.
+    """
+    try:
+        return markdown2.markdown_path(f"entries/{title}.md")
+    except FileNotFoundError:
+        return None
 
 def search_entries(term=""):
     """
